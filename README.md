@@ -1,10 +1,19 @@
-from flask import Flask
+import streamlit as st
+import random
 
-app = Flask(__name__)
+st.title("🌠 Python運勢占い")
+luck = st.slider("あなたの運気を選んでね！", 69, 100)
 
-@app.route("/")
-def home():
-    return "Hello, Singularity Education!"
+messages = [
+    "🌸 新しい出会いがあるかも",
+    "📚 学びのチャンスがやってくる",
+    "💪 今日は行動力がカギ！",
+    "🧘‍♀️ 深呼吸すると運気が上がるよ",
+    "☕ コーヒーでひと息つくと吉"
+]
 
-if __name__ == "__main__":
-    app.run()
+if luck > 80:
+    st.balloons()
+    st.success(random.choice(messages))
+else:
+    st.warning("運気低め。好きなことをして回復しよう！")
